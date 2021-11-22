@@ -1,2 +1,4 @@
-# DockerWebServer
-Environment, Simply Web Server and Log collector.
+# DockerConfig
+*Python env
+*Simple Web Server
+*Log collector
