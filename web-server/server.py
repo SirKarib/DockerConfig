@@ -1,15 +1,16 @@
 # Python 3 server
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import datetime
+import os
 
 hostName = "localhost"
 serverPort = 8080
 dt_info = datetime.datetime.today().strftime("%A, %d %B %Y, %H:%M:%S")
+log_path = os.getenv("LOG_PATH", "../var/log/web-server/register.log")
 
 
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
-
         self.send_response(200)
         self.send_header("Content-type", "text/html")
         self.end_headers()
@@ -24,7 +25,7 @@ class MyServer(BaseHTTPRequestHandler):
     def write_logs(self):
         request_text = self.path
         log = dt_info + ': ' + request_text
-        with open("register.log", "a") as file:
+        with open(log_path, "a") as file:
             file.write(log + '\n')
         file.close()
 
@@ -34,7 +35,7 @@ if __name__ == "__main__":
     start_server = "Server started http://%s:%s" % (hostName, serverPort)
     print(start_server)
 
-    with open("register.log", "a") as file:
+    with open(log_path, "a") as file:
         file.write(dt_info + ' - ' + start_server + '\n')
     file.close()
 
@@ -44,4 +45,9 @@ if __name__ == "__main__":
         pass
 
     webServer.server_close()
-    print("Server stopped.")
+    stop_server = "Server stopped."
+    print(stop_server)
+
+    with open(log_path, "a") as file:
+        file.write(dt_info + ' - ' + stop_server + '\n')
+    file.close()
