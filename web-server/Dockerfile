@@ -1,7 +1,9 @@
-FROM alpine-gcc
+FROM python-env
+
+WORKDIR /web-server
+
+COPY server.py /web-server
 
 EXPOSE 8080
 
-COPY . /web-server
-
-CMD python3 /web-server/server.py
+CMD ["python3", "server.py", "&"]
