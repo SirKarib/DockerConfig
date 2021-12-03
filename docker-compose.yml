@@ -1,0 +1,23 @@
+version: "3.0"
+services:
+  web-server:
+    image: web-server
+    container_name: web-server
+    build: web-server/
+    volumes:
+      - ../logs/:/var/log/web-server
+    environment:
+      - LOG_PATH="../var/log/web-server/register.log"
+    ports:
+      - "8080:8080"
+    network_mode: host
+  log-collector:
+    image: log-collector
+    container_name: log-collector
+    build: log-collector/
+    volumes:
+      - ../logs/:/var/log/web-server
+    environment:
+      - LOG_PATH="../var/log/web-server/register.log"
+    depends_on:
+      - web-server
