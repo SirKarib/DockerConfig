@@ -5,7 +5,7 @@
 
 
 ```sh
-cd docker/python-env
+cd /python-env
 ```
 
 ```sh
@@ -13,7 +13,7 @@ docker build -t python-env .
 ```
 
 ```sh
-cd docker/
+cd /
 ```
 
 ```sh
