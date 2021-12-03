@@ -1,2 +1,6 @@
 FROM alpine:3.14
-RUN apk add --update gcc
+
+ENV PYTHONBUFFERED=1
+
+RUN echo "*** Install Python ***" && \
+    apk add --no-cache python3
