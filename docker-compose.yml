@@ -1,0 +1,9 @@
+version: "3.0"
+services:
+  simple-app:
+    image: example-server
+    container_name: example-server
+    ports:
+      - 80:8080
+    volumes:
+      - /tmp/cloud/logs:/logs
