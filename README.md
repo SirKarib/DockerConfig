@@ -4,6 +4,6 @@
 - Log Collector
 
 
-```sh
+```docker
 docker build -t python-env .
 ```
