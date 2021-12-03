@@ -1,5 +1,7 @@
-FROM alpine-gcc
+FROM python-env
 
-COPY . /log-collector
+WORKDIR /log-collector
 
-ENTRYPOINT /log-collector/printer.sh 
+COPY printer.py /log-collector
+
+CMD ["python3", "printer.py"]
