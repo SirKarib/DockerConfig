@@ -8,5 +8,5 @@ docker-compose build
 ```
 
 ```sh
-docker-compose up
+docker-compose up -d
 ```
