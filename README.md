@@ -11,7 +11,7 @@ docker-compose build
 docker-compose up -d
 ```
 
-Display Web-server logs
+Print Web-server logs
 
 ```sh
 docker-compose start log-collector && docker logs --tails 20 log-collector
