@@ -5,8 +5,8 @@ import os
 
 hostName = "localhost"
 serverPort = 8080
-dt_info = datetime.datetime.today().strftime("%A, %d %B %Y, %H:%M:%S")
-log_path = os.getenv("LOG_PATH", "../var/log/web-server/register.log")
+DT_INFO = datetime.datetime.today().strftime("%A, %d %B %Y, %H:%M:%S")
+LOG_PATH = os.getenv("LOG_PATH", "../var/log/web-server/register.log")
 
 
 class MyServer(BaseHTTPRequestHandler):
@@ -24,19 +24,19 @@ class MyServer(BaseHTTPRequestHandler):
 
     def write_logs(self):
         request_text = self.path
-        log = dt_info + ': ' + request_text
-        with open(log_path, "a") as file:
+        log = DT_INFO + ': ' + request_text
+        with open(LOG_PATH, "a") as file:
             file.write(log + '\n')
         file.close()
 
 
 if __name__ == "__main__":
     webServer = HTTPServer((hostName, serverPort), MyServer)
-    start_server = "Server started http://%s:%s" % (hostName, serverPort)
-    print(start_server)
+    START_SERVER = "Server started http://%s:%s" % (hostName, serverPort)
+    print(START_SERVER)
 
-    with open(log_path, "a") as file:
-        file.write(dt_info + ' - ' + start_server + '\n')
+    with open(LOG_PATH, "a") as file:
+        file.write(DT_INFO + ' - ' + START_SERVER + '\n')
     file.close()
 
     try:
@@ -45,9 +45,9 @@ if __name__ == "__main__":
         pass
 
     webServer.server_close()
-    stop_server = "Server stopped."
-    print(stop_server)
+    STOP_SERVER = "Server stopped."
+    print(STOP_SERVER)
 
-    with open(log_path, "a") as file:
-        file.write(dt_info + ' - ' + stop_server + '\n')
+    with open(LOG_PATH, "a") as file:
+        file.write(DT_INFO + ' - ' + STOP_SERVER + '\n')
     file.close()
