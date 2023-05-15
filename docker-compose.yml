@@ -10,7 +10,7 @@ services:
       - LOG_PATH="/log/web-server/register.log"
     ports:
       - "8080:8080"
-    #network_mode: host
+    network_mode: host
   log-collector:
     image: log-collector
     container_name: log-collector
