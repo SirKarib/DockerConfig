@@ -5,9 +5,9 @@ services:
     container_name: web-server
     build: web-server/
     volumes:
-      - /home/:/log/web-server
+      - ../logs/:/var/log/web-server
     environment:
-      - LOG_PATH="/log/web-server/register.log"
+      - LOG_PATH="../var/log/web-server/register.log"
     ports:
       - "8080:8080"
     network_mode: host
@@ -16,8 +16,8 @@ services:
     container_name: log-collector
     build: log-collector/
     volumes:
-      - /home/:/log/web-server
+      - ../logs/:/var/log/web-server
     environment:
-      - LOG_PATH="/log/web-server/register.log"
+      - LOG_PATH="../var/log/web-server/register.log"
     depends_on:
       - web-server
