@@ -6,7 +6,7 @@ import os
 hostName = "localhost"
 serverPort = 8080
 DT_INFO = datetime.datetime.today().strftime("%A, %d %B %Y, %H:%M:%S")
-LOG_PATH = os.getenv("LOG_PATH", "/log/web-server/register.log")
+LOG_PATH = os.getenv("LOG_PATH", "../var/log/web-server/register.log")
 
 
 class MyServer(BaseHTTPRequestHandler):
